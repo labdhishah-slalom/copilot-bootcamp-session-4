@@ -13,7 +13,7 @@ from typing import Any, Dict, List, Optional
 from fastapi import FastAPI, HTTPException
 from fastapi.responses import RedirectResponse
 from fastapi.staticfiles import StaticFiles
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, EmailStr, Field, validator
 
 app = FastAPI(title="Slalom Capabilities Management API",
               description="API for managing consulting capabilities and consultant expertise")
@@ -26,13 +26,64 @@ data_file = current_dir / "data" / "consulting_data.json"
 
 
 class ConsultantRegistration(BaseModel):
-    email: str
+    email: EmailStr
     name: str = ""
     practice_area: str = ""
     skill_level: str = ""
     certifications: List[str] = Field(default_factory=list)
-    availability: Optional[int] = None
+    availability: Optional[int] = Field(default=None, ge=0, le=40)
     preferred_industries: List[str] = Field(default_factory=list)
+
+    @validator("practice_area")
+    def validate_practice_area(cls, value: str) -> str:
+        """Normalize and validate practice area if provided."""
+        if value is None:
+            return ""
+        normalized = value.strip()
+        if not normalized:
+            # Allow empty / unspecified practice area
+            return ""
+        allowed_practice_areas = {
+            "Strategy",
+            "Technology",
+            "Operations",
+            "Sales",
+            "Finance",
+            "Data & Analytics",
+        }
+        if normalized not in allowed_practice_areas:
+            raise ValueError("Unsupported practice_area value")
+        return normalized
+
+    @validator("skill_level")
+    def validate_skill_level(cls, value: str) -> str:
+        """Normalize and validate skill level if provided."""
+        if value is None:
+            return ""
+        normalized = value.strip()
+        if not normalized:
+            # Allow empty / unspecified skill level
+            return ""
+        allowed_skill_levels = {
+            "Junior",
+            "Mid",
+            "Senior",
+            "Principal",
+            "Director",
+        }
+        if normalized not in allowed_skill_levels:
+            raise ValueError("Unsupported skill_level value")
+        return normalized
+
+    @validator("certifications", "preferred_industries", each_item=True)
+    def normalize_list_items(cls, value: str) -> str:
+        """Trim whitespace from list items and reject empty entries."""
+        if value is None:
+            raise ValueError("List items must be non-empty strings")
+        normalized = value.strip()
+        if not normalized:
+            raise ValueError("List items must be non-empty strings")
+        return normalized
 
 
 def load_data() -> Dict[str, Any]:
