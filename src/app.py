@@ -50,7 +50,11 @@ def normalize_text(value: str) -> str:
 
 
 def normalize_list(values: List[str]) -> List[str]:
-    cleaned = [normalize_text(value) for value in values if normalize_text(value)]
+    cleaned: List[str] = []
+    for value in values:
+        normalized = normalize_text(value)
+        if normalized:
+            cleaned.append(normalized)
     return list(dict.fromkeys(cleaned))
 
 
