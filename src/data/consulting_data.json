@@ -1,0 +1,231 @@
+{
+  "capabilities": {
+    "Cloud Architecture": {
+      "description": "Design and implement scalable cloud solutions using AWS, Azure, and GCP",
+      "practice_area": "Technology",
+      "skill_levels": ["Emerging", "Proficient", "Advanced", "Expert"],
+      "certifications": ["AWS Solutions Architect", "Azure Architect Expert"],
+      "industry_verticals": ["Healthcare", "Financial Services", "Retail"],
+      "capacity": 40,
+      "consultants": ["alice.smith@slalom.com", "bob.johnson@slalom.com"]
+    },
+    "Data Analytics": {
+      "description": "Advanced data analysis, visualization, and machine learning solutions",
+      "practice_area": "Technology",
+      "skill_levels": ["Emerging", "Proficient", "Advanced", "Expert"],
+      "certifications": ["Tableau Desktop Specialist", "Power BI Expert", "Google Analytics"],
+      "industry_verticals": ["Retail", "Healthcare", "Manufacturing"],
+      "capacity": 35,
+      "consultants": ["emma.davis@slalom.com", "sophia.wilson@slalom.com"]
+    },
+    "DevOps Engineering": {
+      "description": "CI/CD pipeline design, infrastructure automation, and containerization",
+      "practice_area": "Technology",
+      "skill_levels": ["Emerging", "Proficient", "Advanced", "Expert"],
+      "certifications": ["Docker Certified Associate", "Kubernetes Admin", "Jenkins Certified"],
+      "industry_verticals": ["Technology", "Financial Services"],
+      "capacity": 30,
+      "consultants": ["john.brown@slalom.com", "olivia.taylor@slalom.com"]
+    },
+    "Digital Strategy": {
+      "description": "Digital transformation planning and strategic technology roadmaps",
+      "practice_area": "Strategy",
+      "skill_levels": ["Emerging", "Proficient", "Advanced", "Expert"],
+      "certifications": ["Digital Transformation Certificate", "Agile Certified Practitioner"],
+      "industry_verticals": ["Healthcare", "Financial Services", "Government"],
+      "capacity": 25,
+      "consultants": ["liam.anderson@slalom.com", "noah.martinez@slalom.com"]
+    },
+    "Change Management": {
+      "description": "Organizational change leadership and adoption strategies",
+      "practice_area": "Operations",
+      "skill_levels": ["Emerging", "Proficient", "Advanced", "Expert"],
+      "certifications": ["Prosci Certified", "Lean Six Sigma Black Belt"],
+      "industry_verticals": ["Healthcare", "Manufacturing", "Government"],
+      "capacity": 20,
+      "consultants": ["ava.garcia@slalom.com", "mia.rodriguez@slalom.com"]
+    },
+    "UX/UI Design": {
+      "description": "User experience design and digital product innovation",
+      "practice_area": "Technology",
+      "skill_levels": ["Emerging", "Proficient", "Advanced", "Expert"],
+      "certifications": ["Adobe Certified Expert", "Google UX Design Certificate"],
+      "industry_verticals": ["Retail", "Healthcare", "Technology"],
+      "capacity": 30,
+      "consultants": ["amelia.lee@slalom.com", "harper.white@slalom.com"]
+    },
+    "Cybersecurity": {
+      "description": "Information security strategy, risk assessment, and compliance",
+      "practice_area": "Technology",
+      "skill_levels": ["Emerging", "Proficient", "Advanced", "Expert"],
+      "certifications": ["CISSP", "CISM", "CompTIA Security+"],
+      "industry_verticals": ["Financial Services", "Healthcare", "Government"],
+      "capacity": 25,
+      "consultants": ["ella.clark@slalom.com", "scarlett.lewis@slalom.com"]
+    },
+    "Business Intelligence": {
+      "description": "Enterprise reporting, data warehousing, and business analytics",
+      "practice_area": "Technology",
+      "skill_levels": ["Emerging", "Proficient", "Advanced", "Expert"],
+      "certifications": ["Microsoft BI Certification", "Qlik Sense Certified"],
+      "industry_verticals": ["Retail", "Manufacturing", "Financial Services"],
+      "capacity": 35,
+      "consultants": ["james.walker@slalom.com", "benjamin.hall@slalom.com"]
+    },
+    "Agile Coaching": {
+      "description": "Agile transformation and team coaching for scaled delivery",
+      "practice_area": "Operations",
+      "skill_levels": ["Emerging", "Proficient", "Advanced", "Expert"],
+      "certifications": ["Certified Scrum Master", "SAFe Agilist", "ICAgile Certified"],
+      "industry_verticals": ["Technology", "Financial Services", "Healthcare"],
+      "capacity": 20,
+      "consultants": ["charlotte.young@slalom.com", "henry.king@slalom.com"]
+    }
+  },
+  "consultants": {
+    "alice.smith@slalom.com": {
+      "name": "Alice Smith",
+      "practice_area": "Technology",
+      "skill_level": "Expert",
+      "certifications": ["AWS Solutions Architect", "Azure Architect Expert"],
+      "availability": 32,
+      "preferred_industries": ["Healthcare", "Financial Services"]
+    },
+    "bob.johnson@slalom.com": {
+      "name": "Bob Johnson",
+      "practice_area": "Technology",
+      "skill_level": "Advanced",
+      "certifications": ["AWS Solutions Architect"],
+      "availability": 24,
+      "preferred_industries": ["Retail", "Financial Services"]
+    },
+    "emma.davis@slalom.com": {
+      "name": "Emma Davis",
+      "practice_area": "Technology",
+      "skill_level": "Expert",
+      "certifications": ["Tableau Desktop Specialist", "Power BI Expert"],
+      "availability": 28,
+      "preferred_industries": ["Retail", "Healthcare"]
+    },
+    "sophia.wilson@slalom.com": {
+      "name": "Sophia Wilson",
+      "practice_area": "Technology",
+      "skill_level": "Advanced",
+      "certifications": ["Google Analytics"],
+      "availability": 30,
+      "preferred_industries": ["Manufacturing", "Healthcare"]
+    },
+    "john.brown@slalom.com": {
+      "name": "John Brown",
+      "practice_area": "Technology",
+      "skill_level": "Expert",
+      "certifications": ["Docker Certified Associate", "Kubernetes Admin"],
+      "availability": 35,
+      "preferred_industries": ["Technology", "Financial Services"]
+    },
+    "olivia.taylor@slalom.com": {
+      "name": "Olivia Taylor",
+      "practice_area": "Technology",
+      "skill_level": "Advanced",
+      "certifications": ["Jenkins Certified"],
+      "availability": 20,
+      "preferred_industries": ["Technology"]
+    },
+    "liam.anderson@slalom.com": {
+      "name": "Liam Anderson",
+      "practice_area": "Strategy",
+      "skill_level": "Expert",
+      "certifications": ["Digital Transformation Certificate"],
+      "availability": 18,
+      "preferred_industries": ["Healthcare", "Government"]
+    },
+    "noah.martinez@slalom.com": {
+      "name": "Noah Martinez",
+      "practice_area": "Strategy",
+      "skill_level": "Advanced",
+      "certifications": ["Agile Certified Practitioner"],
+      "availability": 20,
+      "preferred_industries": ["Financial Services", "Government"]
+    },
+    "ava.garcia@slalom.com": {
+      "name": "Ava Garcia",
+      "practice_area": "Operations",
+      "skill_level": "Expert",
+      "certifications": ["Prosci Certified"],
+      "availability": 22,
+      "preferred_industries": ["Healthcare", "Government"]
+    },
+    "mia.rodriguez@slalom.com": {
+      "name": "Mia Rodriguez",
+      "practice_area": "Operations",
+      "skill_level": "Advanced",
+      "certifications": ["Lean Six Sigma Black Belt"],
+      "availability": 24,
+      "preferred_industries": ["Manufacturing"]
+    },
+    "amelia.lee@slalom.com": {
+      "name": "Amelia Lee",
+      "practice_area": "Technology",
+      "skill_level": "Expert",
+      "certifications": ["Adobe Certified Expert"],
+      "availability": 26,
+      "preferred_industries": ["Retail", "Technology"]
+    },
+    "harper.white@slalom.com": {
+      "name": "Harper White",
+      "practice_area": "Technology",
+      "skill_level": "Advanced",
+      "certifications": ["Google UX Design Certificate"],
+      "availability": 30,
+      "preferred_industries": ["Healthcare", "Technology"]
+    },
+    "ella.clark@slalom.com": {
+      "name": "Ella Clark",
+      "practice_area": "Technology",
+      "skill_level": "Expert",
+      "certifications": ["CISSP"],
+      "availability": 25,
+      "preferred_industries": ["Financial Services", "Government"]
+    },
+    "scarlett.lewis@slalom.com": {
+      "name": "Scarlett Lewis",
+      "practice_area": "Technology",
+      "skill_level": "Advanced",
+      "certifications": ["CISM", "CompTIA Security+"],
+      "availability": 20,
+      "preferred_industries": ["Healthcare", "Government"]
+    },
+    "james.walker@slalom.com": {
+      "name": "James Walker",
+      "practice_area": "Technology",
+      "skill_level": "Expert",
+      "certifications": ["Microsoft BI Certification"],
+      "availability": 28,
+      "preferred_industries": ["Retail", "Manufacturing"]
+    },
+    "benjamin.hall@slalom.com": {
+      "name": "Benjamin Hall",
+      "practice_area": "Technology",
+      "skill_level": "Advanced",
+      "certifications": ["Qlik Sense Certified"],
+      "availability": 30,
+      "preferred_industries": ["Financial Services"]
+    },
+    "charlotte.young@slalom.com": {
+      "name": "Charlotte Young",
+      "practice_area": "Operations",
+      "skill_level": "Expert",
+      "certifications": ["Certified Scrum Master", "SAFe Agilist"],
+      "availability": 18,
+      "preferred_industries": ["Technology", "Healthcare"]
+    },
+    "henry.king@slalom.com": {
+      "name": "Henry King",
+      "practice_area": "Operations",
+      "skill_level": "Advanced",
+      "certifications": ["ICAgile Certified"],
+      "availability": 20,
+      "preferred_industries": ["Financial Services", "Healthcare"]
+    }
+  }
+}

@@ -18,14 +18,6 @@
     </header>
 
     <main>
-      <section id="capabilities-container">
-        <h3>Available Capabilities</h3>
-        <div id="capabilities-list">
-          <!-- Capabilities will be loaded here -->
-          <p>Loading capabilities...</p>
-        </div>
-      </section>
-
       <section id="register-container">
         <h3>Register Your Expertise</h3>
         <form id="register-form">
@@ -34,15 +26,68 @@
             <input type="email" id="email" required placeholder="your-email@slalom.com" />
           </div>
           <div class="form-group">
-            <label for="capability">Select Capability:</label>
-            <select id="capability" required>
-              <option value="">-- Select a capability --</option>
-              <!-- Capability options will be loaded here -->
-            </select>
+            <label for="name">Consultant Name:</label>
+            <input type="text" id="name" placeholder="Optional for existing consultants" />
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="practice-area">Practice Area:</label>
+              <select id="practice-area">
+                <option value="">Match capability practice area</option>
+                <option value="Strategy">Strategy</option>
+                <option value="Technology">Technology</option>
+                <option value="Operations">Operations</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="skill-level">Skill Level:</label>
+              <select id="skill-level">
+                <option value="">Match capability default</option>
+                <option value="Emerging">Emerging</option>
+                <option value="Proficient">Proficient</option>
+                <option value="Advanced">Advanced</option>
+                <option value="Expert">Expert</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="availability">Availability (hours/week):</label>
+              <input type="number" id="availability" min="0" max="40" placeholder="40" />
+            </div>
+            <div class="form-group">
+              <label for="capability">Select Capability:</label>
+              <select id="capability" required>
+                <option value="">-- Select a capability --</option>
+                <!-- Capability options will be loaded here -->
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="certifications">Certifications:</label>
+            <input type="text" id="certifications" placeholder="Comma-separated certifications" />
+          </div>
+          <div class="form-group">
+            <label for="preferred-industries">Preferred Industries:</label>
+            <input type="text" id="preferred-industries" placeholder="Comma-separated industries" />
           </div>
           <button type="submit">Register Expertise</button>
         </form>
         <div id="message" class="hidden"></div>
+      </section>
+
+      <section id="capabilities-container" class="wide-section">
+        <h3>Available Capabilities</h3>
+        <div id="capabilities-list">
+          <p>Loading capabilities...</p>
+        </div>
+      </section>
+
+      <section id="consultants-container" class="wide-section">
+        <h3>Consultant Directory</h3>
+        <div id="consultants-list">
+          <p>Loading consultant profiles...</p>
+        </div>
       </section>
     </main>
 
