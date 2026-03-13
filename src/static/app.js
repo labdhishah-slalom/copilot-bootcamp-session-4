@@ -96,47 +96,123 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   async function fetchConsultants() {
+    // Helper to safely render badge-like tags into a container element
+    function appendBadges(container, values, fallbackText) {
+      let items = [];
+
+      if (Array.isArray(values)) {
+        items = values;
+      } else if (typeof values === "string" && values.trim() !== "") {
+        items = parseCommaSeparated(values);
+      }
+
+      if (!items.length) {
+        const fallbackSpan = document.createElement("span");
+        fallbackSpan.textContent = fallbackText;
+        container.appendChild(fallbackSpan);
+        return;
+      }
+
+      items.forEach((item) => {
+        const badge = document.createElement("span");
+        badge.textContent = item;
+        container.appendChild(badge);
+      });
+    }
+
     try {
       const response = await fetch("/consultants");
       const consultants = await response.json();
 
+      // Clear any existing content
+      consultantsList.textContent = "";
+
       if (!consultants.length) {
-        consultantsList.innerHTML = "<p>No consultant profiles found yet.</p>";
+        const p = document.createElement("p");
+        p.textContent = "No consultant profiles found yet.";
+        consultantsList.appendChild(p);
         return;
       }
 
-      consultantsList.innerHTML = consultants
-        .map(
-          (consultant) => `
-            <article class="consultant-card">
-              <div class="consultant-card-header">
-                <div>
-                  <h4>${consultant.name}</h4>
-                  <p>${consultant.email}</p>
-                </div>
-                <span class="skill-pill">${consultant.skill_level || "Unrated"}</span>
-              </div>
-              <p><strong>Practice Area:</strong> ${consultant.practice_area || "Not set"}</p>
-              <p><strong>Availability:</strong> ${consultant.availability ?? "Not set"} hours/week</p>
-              <div>
-                <strong>Certifications:</strong>
-                <div class="tag-group">${renderConsultantBadges(consultant.certifications, "No certifications")}</div>
-              </div>
-              <div>
-                <strong>Preferred Industries:</strong>
-                <div class="tag-group">${renderConsultantBadges(consultant.preferred_industries, "No industry preferences")}</div>
-              </div>
-              <div>
-                <strong>Registered Capabilities:</strong>
-                <div class="tag-group">${renderConsultantBadges(consultant.registered_capabilities, "No capabilities registered")}</div>
-              </div>
-            </article>
-          `
-        )
-        .join("");
+      consultants.forEach((consultant) => {
+        const article = document.createElement("article");
+        article.className = "consultant-card";
+
+        const header = document.createElement("div");
+        header.className = "consultant-card-header";
+
+        const headerInfo = document.createElement("div");
+
+        const nameEl = document.createElement("h4");
+        nameEl.textContent = consultant.name || "";
+
+        const emailEl = document.createElement("p");
+        emailEl.textContent = consultant.email || "";
+
+        headerInfo.appendChild(nameEl);
+        headerInfo.appendChild(emailEl);
+
+        const skillPill = document.createElement("span");
+        skillPill.className = "skill-pill";
+        skillPill.textContent = consultant.skill_level || "Unrated";
+
+        header.appendChild(headerInfo);
+        header.appendChild(skillPill);
+
+        const practicePara = document.createElement("p");
+        const practiceStrong = document.createElement("strong");
+        practiceStrong.textContent = "Practice Area:";
+        practicePara.appendChild(practiceStrong);
+        practicePara.appendChild(document.createTextNode(" " + (consultant.practice_area || "Not set")));
+
+        const availabilityPara = document.createElement("p");
+        const availabilityStrong = document.createElement("strong");
+        availabilityStrong.textContent = "Availability:";
+        availabilityPara.appendChild(availabilityStrong);
+        const availabilityText = consultant.availability ?? "Not set";
+        availabilityPara.appendChild(document.createTextNode(" " + availabilityText + " hours/week"));
+
+        const certificationsDiv = document.createElement("div");
+        const certificationsStrong = document.createElement("strong");
+        certificationsStrong.textContent = "Certifications:";
+        const certificationsTagGroup = document.createElement("div");
+        certificationsTagGroup.className = "tag-group";
+        appendBadges(certificationsTagGroup, consultant.certifications, "No certifications");
+        certificationsDiv.appendChild(certificationsStrong);
+        certificationsDiv.appendChild(certificationsTagGroup);
+
+        const industriesDiv = document.createElement("div");
+        const industriesStrong = document.createElement("strong");
+        industriesStrong.textContent = "Preferred Industries:";
+        const industriesTagGroup = document.createElement("div");
+        industriesTagGroup.className = "tag-group";
+        appendBadges(industriesTagGroup, consultant.preferred_industries, "No industry preferences");
+        industriesDiv.appendChild(industriesStrong);
+        industriesDiv.appendChild(industriesTagGroup);
+
+        const capabilitiesDiv = document.createElement("div");
+        const capabilitiesStrong = document.createElement("strong");
+        capabilitiesStrong.textContent = "Registered Capabilities:";
+        const capabilitiesTagGroup = document.createElement("div");
+        capabilitiesTagGroup.className = "tag-group";
+        appendBadges(capabilitiesTagGroup, consultant.registered_capabilities, "No capabilities registered");
+        capabilitiesDiv.appendChild(capabilitiesStrong);
+        capabilitiesDiv.appendChild(capabilitiesTagGroup);
+
+        article.appendChild(header);
+        article.appendChild(practicePara);
+        article.appendChild(availabilityPara);
+        article.appendChild(certificationsDiv);
+        article.appendChild(industriesDiv);
+        article.appendChild(capabilitiesDiv);
+
+        consultantsList.appendChild(article);
+      });
     } catch (error) {
-      consultantsList.innerHTML =
-        "<p>Failed to load consultant profiles. Please try again later.</p>";
+      consultantsList.textContent = "";
+      const p = document.createElement("p");
+      p.textContent = "Failed to load consultant profiles. Please try again later.";
+      consultantsList.appendChild(p);
       console.error("Error fetching consultants:", error);
     }
   }
