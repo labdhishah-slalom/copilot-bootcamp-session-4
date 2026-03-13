@@ -202,10 +202,18 @@ def register_for_capability(capability_name: str, consultant: ConsultantRegistra
         )
 
     existing_profile = consultants.get(email, {})
+
+    # Determine a safe default skill level from the capability definition.
+    skill_levels = capability.get("skill_levels") or []
+    if isinstance(skill_levels, list) and skill_levels:
+        default_skill_level = skill_levels[0]
+    else:
+        default_skill_level = ""
+
     consultants[email] = {
         "name": normalize_text(consultant.name) or existing_profile.get("name") or default_name_from_email(email),
         "practice_area": normalize_text(consultant.practice_area) or existing_profile.get("practice_area") or capability.get("practice_area", ""),
-        "skill_level": normalize_text(consultant.skill_level) or existing_profile.get("skill_level") or capability.get("skill_levels", [""])[0],
+        "skill_level": normalize_text(consultant.skill_level) or existing_profile.get("skill_level") or default_skill_level,
         "certifications": normalize_list(consultant.certifications) or existing_profile.get("certifications", []),
         "availability": consultant.availability if consultant.availability is not None else existing_profile.get("availability", 40),
         "preferred_industries": normalize_list(consultant.preferred_industries) or existing_profile.get("preferred_industries", []),
