@@ -12,13 +12,25 @@ document.addEventListener("DOMContentLoaded", () => {
       .filter(Boolean);
   }
 
+  function escapeHtml(value) {
+    if (value === null || value === undefined) {
+      return "";
+    }
+    return String(value)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#39;");
+  }
+
   function renderConsultantBadges(values, emptyState) {
     if (!values || values.length === 0) {
-      return `<span class="empty-state">${emptyState}</span>`;
+      return `<span class="empty-state">${escapeHtml(emptyState)}</span>`;
     }
 
     return values
-      .map((value) => `<span class="tag">${value}</span>`)
+      .map((value) => `<span class="tag">${escapeHtml(value)}</span>`)
       .join("");
   }
 
@@ -51,10 +63,10 @@ document.addEventListener("DOMContentLoaded", () => {
                     (consultant) =>
                       `<li>
                         <div>
-                          <span class="consultant-email">${consultant.name}</span>
-                          <div class="consultant-meta">${consultant.email} • ${consultant.skill_level || "Unrated"} • ${consultant.availability ?? "?"} hrs/week</div>
+                          <span class="consultant-email">${escapeHtml(consultant.name)}</span>
+                          <div class="consultant-meta">${escapeHtml(consultant.email)} • ${escapeHtml(consultant.skill_level || "Unrated")} • ${escapeHtml(consultant.availability ?? "?")} hrs/week</div>
                         </div>
-                        <button class="delete-btn" data-capability="${name}" data-email="${consultant.email}">Remove</button>
+                        <button class="delete-btn" data-capability="${escapeHtml(name)}" data-email="${escapeHtml(consultant.email)}">Remove</button>
                       </li>`
                   )
                   .join("")}
@@ -63,13 +75,21 @@ document.addEventListener("DOMContentLoaded", () => {
             : `<p><em>No consultants registered yet</em></p>`;
 
         capabilityCard.innerHTML = `
-          <h4>${name}</h4>
-          <p>${details.description}</p>
-          <p><strong>Practice Area:</strong> ${details.practice_area}</p>
-          <p><strong>Industry Verticals:</strong> ${details.industry_verticals ? details.industry_verticals.join(', ') : 'Not specified'}</p>
+          <h4>${escapeHtml(name)}</h4>
+          <p>${escapeHtml(details.description)}</p>
+          <p><strong>Practice Area:</strong> ${escapeHtml(details.practice_area)}</p>
+          <p><strong>Industry Verticals:</strong> ${
+            details.industry_verticals
+              ? details.industry_verticals.map(escapeHtml).join(", ")
+              : "Not specified"
+          }</p>
           <p><strong>Capacity:</strong> ${availableCapacity} hours/week available</p>
           <p><strong>Current Team:</strong> ${currentConsultants} consultants</p>
-          <p><strong>Required Certifications:</strong> ${details.certifications ? details.certifications.join(', ') : 'None listed'}</p>
+          <p><strong>Required Certifications:</strong> ${
+            details.certifications
+              ? details.certifications.map(escapeHtml).join(", ")
+              : "None listed"
+          }</p>
           <div class="consultants-container">
             ${consultantsHTML}
           </div>
