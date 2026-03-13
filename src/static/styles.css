@@ -73,6 +73,10 @@ section {
   max-width: 500px;
 }
 
+.wide-section {
+  max-width: 1040px;
+}
+
 section h3 {
   margin-bottom: 20px;
   padding-bottom: 10px;
@@ -147,6 +151,11 @@ section h3 {
   color: #003d7a;
 }
 
+.consultant-meta {
+  color: #5f6b7a;
+  font-size: 0.9rem;
+}
+
 .delete-btn {
   background: linear-gradient(135deg, #ff5722, #d32f2f);
   border: none;
@@ -190,6 +199,12 @@ section h3 {
   border: 1px solid #ddd;
   border-radius: 4px;
   font-size: 16px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 15px;
 }
 
 button[type="submit"] {
@@ -238,6 +253,66 @@ button[type="submit"]:hover {
 
 .hidden {
   display: none;
+}
+
+#consultants-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.consultant-card {
+  border: 1px solid #dce7f5;
+  border-radius: 10px;
+  padding: 18px;
+  background: linear-gradient(180deg, #ffffff, #f7fbff);
+  box-shadow: 0 3px 8px rgba(0, 61, 122, 0.08);
+}
+
+.consultant-card h4 {
+  color: #003d7a;
+  margin-bottom: 4px;
+}
+
+.consultant-card p {
+  margin-bottom: 10px;
+}
+
+.consultant-card-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.skill-pill {
+  background: #003d7a;
+  color: white;
+  border-radius: 999px;
+  padding: 6px 10px;
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+
+.tag-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.tag {
+  background: #e3f2fd;
+  color: #003d7a;
+  border-radius: 999px;
+  padding: 5px 10px;
+  font-size: 0.85rem;
+}
+
+.empty-state {
+  color: #6c757d;
+  font-style: italic;
 }
 
 footer {
@@ -290,6 +365,10 @@ footer {
   .header-content {
     flex-direction: column;
     gap: 10px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
   }
   
   .mascot {

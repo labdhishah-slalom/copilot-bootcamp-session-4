@@ -10,8 +10,10 @@ A FastAPI application that enables Slalom consultants to register their capabili
 
 - View all available consulting capabilities
 - Register consultant expertise and availability
-- Track skill levels and certifications
+- Track consultant skill levels, certifications, and industry preferences
+- Browse a consultant directory with registered capabilities
 - Manage capability capacity and team assignments
+- Persist consultant and capability data in a local JSON store
 
 ## Getting Started
 
@@ -36,8 +38,9 @@ A FastAPI application that enables Slalom consultants to register their capabili
 
 | Method | Endpoint                                                          | Description                                                         |
 | ------ | ----------------------------------------------------------------- | ------------------------------------------------------------------- |
-| GET    | `/capabilities`                                                   | Get all capabilities with details and current consultant assignments |
-| POST   | `/capabilities/{capability_name}/register?email=consultant@slalom.com` | Register consultant for a capability                     |
+| GET    | `/capabilities`                                                   | Get all capabilities with current consultant profile assignments    |
+| GET    | `/consultants`                                                    | Get all consultant profiles and their registered capabilities       |
+| POST   | `/capabilities/{capability_name}/register`                        | Register or enrich a consultant profile for a capability            |
 | DELETE | `/capabilities/{capability_name}/unregister?email=consultant@slalom.com` | Unregister consultant from a capability              |
 
 ## Data Model
@@ -50,7 +53,7 @@ The application uses a consulting-focused data model:
    - Practice area (Strategy, Technology, Operations)
    - Industry verticals served
    - Required certifications
-   - List of consultant emails registered
+   - List of registered consultant references
    - Available capacity (hours per week)
    - Geographic location preferences
 
@@ -60,8 +63,10 @@ The application uses a consulting-focused data model:
    - Skill level
    - Certifications
    - Availability
+   - Preferred industries
+   - Registered capabilities
 
-All data is currently stored in memory for this learning exercise. In a production environment, this would be backed by a robust database system.
+All data is now stored in `src/data/consulting_data.json` for this learning exercise so consultant profiles and registrations survive application restarts. In a production environment, this would be backed by a robust database system.
 
 ## Future Enhancements
 
